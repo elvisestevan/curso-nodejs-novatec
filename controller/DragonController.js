@@ -1,24 +1,43 @@
 'use strict';
 
+let repository = require('../repository/DragonRepository');
+
 let DragonController = {
   list: function (req, res, next) {
-    res.send('Get All Dragons');
+    repository.find({}, function(err, data) {
+      res.json(data);
+    });
   },
 
   create: function (req, res, next) {
-    res.send('create a dragon');
+    let body = req.body;
+
+    repository.insert(body, function(err, data) {
+      res.json(data);
+    });
   },
 
   findById: function (req, res, next) {
-    res.send('Get the dragon ' + req.params.id);
+    repository.findOne({ _id: req.params.id}, function(err, data) {
+      res.json(data);
+    });
   },
 
   remove: function (req, res, next) {
-    res.send('Bye dragon ' + req.params.id);
+    let id = req.params.id;
+
+    repository.remove({_id: id}, function(err, data) {
+      res.json(data);
+    });
   },
 
   update: function (req, res, next) {
-    res.send('Update the dragon ' + req.params.id);
+    let id = req.params.id;
+    let body = req.body;
+
+    repository.update({_id: id}, body, function(err, data) {
+      res.json(data);
+    });
   }
 
 };
