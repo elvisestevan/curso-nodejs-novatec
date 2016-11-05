@@ -1,4 +1,17 @@
 'use strict';
 
 let app = require('../app');
-app.listen(3000);
+let cluster = require('cluster');
+let numCPUs = require('os').cpus().length;
+let debug = require('debug')('curso:bin:www');
+
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+    debug('debug fork');
+  }
+} else {
+  app.listen(3000, function() {
+    debug('app is up');
+  });
+}

@@ -19,6 +19,11 @@ let DragonController = {
 
   findById: function (req, res, next) {
     repository.findOne({ _id: req.params.id}, function(err, data) {
+      if(!data) {
+        let error = new Error('Dragon not found');
+        error.status = 404;
+        return next(error);
+      }
       res.json(data);
     });
   },

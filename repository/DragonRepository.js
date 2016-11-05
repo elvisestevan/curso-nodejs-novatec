@@ -10,7 +10,7 @@ let DragonRepository = {
   findOne: function(query, callback) {
     if(query._id) {
       query._id = db.ObjectId(query._id);
-    }
+    }    
     dragons.findOne(query, callback);
   },
   insert: function(data, callback) {
