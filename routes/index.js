@@ -5,8 +5,6 @@ let MainController = require('../controller/MainController');
 
 router.get('/', MainController.index);
 
-router.get('/outrogato', function (req, res, next) {
-  res.send('Miaau');
-});
+router.get('/outrogato', MainController.outroGato);
 
 module.exports = router;

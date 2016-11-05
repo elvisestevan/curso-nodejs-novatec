@@ -3,12 +3,11 @@
 let MainController = {
 
   index: function(req, res, next) {
-    let q = req.query.q;
-    res.status(401);
-    res.send({
-      name: 'Elveeeees',
-      q: q
-    });
+    res.send('I am the INDEX!!!!!');
+  },
+
+  outroGato: function (req, res, next) {
+    res.send('I am the other CAT!!!!');
   }
 
 };
