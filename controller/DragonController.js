@@ -2,23 +2,23 @@
 
 let DragonController = {
   list: function (req, res, next) {
-    response.send('Get All Dragons');
+    res.send('Get All Dragons');
   },
 
   create: function (req, res, next) {
-    response.send('create a dragon');
+    res.send('create a dragon');
   },
 
   findById: function (req, res, next) {
-    response.send('Get the dragon ' + id);
+    res.send('Get the dragon ' + req.params.id);
   },
 
   remove: function (req, res, next) {
-    response.send('Bye dragon ' + id);
+    res.send('Bye dragon ' + req.params.id);
   },
 
   update: function (req, res, next) {
-    response.send('Update the dragon ' + id);
+    res.send('Update the dragon ' + req.params.id);
   }
 
 };
